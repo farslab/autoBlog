@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->job(GptPostJob::class)->daily();
+        $schedule->job(GptPostJob::class)->everyMinute();
     }
 
     /**

@@ -12,7 +12,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->get();;
         return view('dashboard', compact('posts'));
     }
 
@@ -41,9 +41,17 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
-    {
-        //
+    public function show($post)
+    {   
+        try {
+            $clickedPost=Post::where('slug',$post)->firstOrfail();
+
+            return view('post-show',compact('clickedPost'));
+
+        } catch (\Throwable $th) {
+            return redirect()->with('error', 'post Bulunamadı');
+        }
+
     }
 
     /**

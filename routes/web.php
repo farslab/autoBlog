@@ -19,10 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::middleware(['auth','verified'])->group(function () {
+Route::get('blog/{post}',[PostController::class, 'show'])->name('post-show');
 
-Route::get('/dashboard', [PostController::class, 'index'])->name('dashboard');
-Route::get('/post-create', [PostController::class, 'create'])->name('post-create');
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('/dashboard', [PostController::class, 'index'])->name('dashboard');
+    Route::get('/post-create', [PostController::class, 'create'])->name('post-create');
 
 
 });
@@ -33,4 +35,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

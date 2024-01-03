@@ -12,7 +12,7 @@
                     <div class="w-100 p-6 text-gray-900 flex content-center items-center">
                         <img class="rounded-full object-fill" width="50px" height="50px"
                             src="{{ $post->featured_image }}" alt="{{ $post->title }}">
-                        <p class="pl-2">{{ $post->title }}</p>
+                        <p class="pl-2"><a href="{{route('post-show',$post->slug)}}"> {{ $post->title }}</a></p>
                     </div>
                 </div>
             @endforeach

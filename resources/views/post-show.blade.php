@@ -1,0 +1,1 @@
+{{$clickedPost->title}} a tıklandı
