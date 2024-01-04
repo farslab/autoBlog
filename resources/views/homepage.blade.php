@@ -1,92 +1,104 @@
 @extends('autoblog.app')
 
+@section('title')
+    {{ config('app.name') }}
+@endsection
+
 @section('mainContent')
+    <div class="grid md:grid-cols-3 px-3 gap-2">
+        <div id="default-carousel" class="relative col-span-2" data-carousel="slide">
+            <!-- Carousel wrapper -->
+            <div class="relative h-64 overflow-hidden rounded-lg md:h-full">
 
-<!-- Card Blog -->
-<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-    <!-- Grid -->
-    <div class="grid lg:grid-cols-2 gap-6">
-      <!-- Card -->
-      <a class="group relative block rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-        <div class="flex-shrink-0 relative w-full rounded-xl overflow-hidden w-full h-[350px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]">
-          <img class="w-full h-full absolute top-0 start-0 object-cover" src="https://images.unsplash.com/photo-1669828230990-9b8583a877ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1062&q=80" alt="Image Description">
-        </div>
-  
-        <div class="absolute top-0 inset-x-0 z-10">
-          <div class="p-4 flex flex-col h-full sm:p-6">
-            <!-- Avatar -->
-            <div class="flex items-center">
-              <div class="flex-shrink-0">
-                <img class="h-[2.875rem] w-[2.875rem] border-2 border-white rounded-full" src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description">
-              </div>
-              <div class="ms-2.5 sm:ms-4">
-                <h4 class="font-semibold text-white">
-                  Gloria
-                </h4>
-                <p class="text-xs text-white/[.8]">
-                  Jan 09, 2021
-                </p>
-              </div>
+                @foreach ($featuredPosts as $post)
+                    <!-- Item 1 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ $post->featured_image }}"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                @endforeach
             </div>
-            <!-- End Avatar -->
-          </div>
-        </div>
-  
-        <div class="absolute bottom-0 inset-x-0 z-10">
-          <div class="flex flex-col h-full p-4 sm:p-6">
-            <h3 class="text-lg sm:text-3xl font-semibold text-white group-hover:text-white/[.8]">
-              Facebook is creating a news section in Watch to feature breaking news
-            </h3>
-            <p class="mt-2 text-white/[.8]">
-              Facebook launched the Watch platform in August
-            </p>
-          </div>
-        </div>
-      </a>
-      <!-- End Card -->
-  
-      <!-- Card -->
-      <a class="group relative block rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-        <div class="flex-shrink-0 relative w-full rounded-xl overflow-hidden w-full h-[350px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]">
-          <img class="w-full h-full absolute top-0 start-0 object-cover" src="https://images.unsplash.com/photo-1611625618313-68b87aaa0626?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80" alt="Image Description">
-        </div>
-  
-        <div class="absolute top-0 inset-x-0 z-10">
-          <div class="p-4 flex flex-col h-full sm:p-6">
-            <!-- Avatar -->
-            <div class="flex items-center">
-              <div class="flex-shrink-0">
-                <img class="h-[2.875rem] w-[2.875rem] border-2 border-white rounded-full" src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description">
-              </div>
-              <div class="ms-2.5 sm:ms-4">
-                <h4 class="font-semibold text-white">
-                  Gloria
-                </h4>
-                <p class="text-xs text-white/[.8]">
-                  May 30, 2021
-                </p>
-              </div>
+            <!-- Slider indicators -->
+            <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
+                    data-carousel-slide-to="0"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
+                    data-carousel-slide-to="1"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
+                    data-carousel-slide-to="2"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
+                    data-carousel-slide-to="3"></button>
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
+                    data-carousel-slide-to="4"></button>
             </div>
-            <!-- End Avatar -->
-          </div>
+            <!-- Slider controls -->
+            <button type="button"
+                class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-prev>
+                <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 1 1 5l4 4" />
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+            <button type="button"
+                class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-next>
+                <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 9 4-4-4-4" />
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
         </div>
-  
-        <div class="absolute bottom-0 inset-x-0 z-10">
-          <div class="flex flex-col h-full p-4 sm:p-6">
-            <h3 class="text-lg sm:text-3xl font-semibold text-white group-hover:text-white/[.8]">
-              What CFR (Conversations, Feedback, Recognition) really is about
-            </h3>
-            <p class="mt-2 text-white/[.8]">
-              For a lot of people these days, Measure What Matters.
-            </p>
-          </div>
+
+        <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
+        <div
+            class="flex flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 md:max-w-xl md:flex-row">
+            <img class="h-64 w-auto rounded-t-lg object-cover md:h-auto md:!rounded-none md:!rounded-l-lg"
+                src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg" alt="" />
+            <div class="flex flex-col justify-start p-6">
+                <h5 class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+                    Card title
+                </h5>
+                <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                    This is a wider card with supporting text below as a natural lead-in
+                    to additional content. This content is a little bit longer.
+                </p>
+                <p class="text-xs text-neutral-500 dark:text-neutral-300">
+                    Last updated 3 mins ago
+                </p>
+            </div>
         </div>
-      </a>
-      <!-- End Card -->
+        {{-- <div class="grid gap-2 ">
+
+            @foreach ($featuredPosts->take(3) as $post)
+                <div class="col-span-1 max-w-sm">
+                    <a href="{{ route('post-show', $post->slug) }}"
+                        class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        <img class="object-cover rounded-t-lg md:h-auto md:w-32 md:rounded-none md:rounded-s-lg"
+                            src="{{ $post->featured_image }}" alt="{{ $post->title }}">
+                        <div class="overflow-hidden flex flex-col justify-between p-4 leading-normal">
+                            <h5 class="truncate mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                {{ $post->title }}</h5>
+                            <p class="truncate mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $post->description }}
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+
+        </div> --}}
+
+
+
     </div>
-    <!-- End Grid -->
-  </div>
-  <!-- End Card Blog -->
-  <script src="./node_modules/preline/dist/preline.js"></script>
-
 @endsection

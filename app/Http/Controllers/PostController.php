@@ -10,7 +10,8 @@ class PostController extends Controller
 
     public function home(){
 
-        return view('homepage');
+        $featuredPosts=Post::where('is_featured','1')->get();
+        return view('homepage', compact('featuredPosts'));
 
     }
     public function index()

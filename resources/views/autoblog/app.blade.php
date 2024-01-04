@@ -14,6 +14,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
 </head>
 
 
@@ -92,7 +93,7 @@
 </nav>
 
 <body class="font-sans antialiased">
-    <main class="inline-flex flex-wrap pt-8 pb-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
+    <main class="pt-8 pb-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
 
         @yield('mainContent')
 

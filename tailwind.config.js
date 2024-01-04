@@ -8,7 +8,8 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/views/*.blade.php',
-        'node_modules/preline/dist/*.js',
+        './node_modules/preline/dist/*.js',
+        "./node_modules/flowbite/**/*.js",
 
     ],
     darkMode: 'class',
@@ -22,8 +23,11 @@ export default {
         },
     },
 
-    plugins: [forms,
-        require('preline/plugin'),
+    plugins: [
+        forms,
+        
+        require('flowbite/plugin')
+    
 
     ],
 };
