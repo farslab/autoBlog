@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function home(){
+
+        return view('homepage');
+
+    }
     public function index()
     {
         $posts = Post::orderBy('created_at', 'desc')->get();;
@@ -45,8 +48,9 @@ class PostController extends Controller
     {   
         try {
             $clickedPost=Post::where('slug',$post)->firstOrfail();
+            $lastPosts=Post::orderBy('created_at','desc')->paginate(6);
 
-            return view('post-show',compact('clickedPost'));
+            return view('post-show',compact('clickedPost','lastPosts'));
 
         } catch (\Throwable $th) {
             return redirect()->with('error', 'post Bulunamadı');

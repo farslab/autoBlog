@@ -8,6 +8,8 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/views/*.blade.php',
+        'node_modules/preline/dist/*.js',
+
     ],
     darkMode: 'class',
 
@@ -20,5 +22,8 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [forms,
+        require('preline/plugin'),
+
+    ],
 };
