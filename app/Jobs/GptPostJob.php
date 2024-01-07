@@ -14,7 +14,7 @@ use OpenAI\Laravel\Facades\OpenAI;
 class GptPostJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    public $title="Mustafa Kemal'in Samsun'a Çıkışı";
+    public $title="Medine Müdafaası ve Fahreddin Paşa";
     public $resultImage="";
 
     /**
@@ -33,8 +33,8 @@ class GptPostJob implements ShouldQueue
         
 
         $messages = [
-            ['role' => 'system', 'content' => 'You are the best blogger. You know seo tricks for write a blog post. You should write a blog post as a professional with my title that i send you. Your answers should be turkish.'],
-            ['role' => 'user', 'content' => "$this->title= Başlık. Bu başlık ile SEO uyumlu bir blog postu yazmalı ve $this->title detaylarını anlatmalısın. Bu post 50 kelime civarında olmalı ve kesinliği doğrulanmış bilgilerden oluşmalı istersen blog sonunda 2-3 adet kaynak verebilirsin.Blog yazısını gönderirken h title etiketlerini kullanmalısın. p taglarını ve <br> taglarını kullanmalısın ve eğer alıntı yapacaksan blockquote taglarını kullanmalısın. html bir sayfaya bize verdiğin cevabı koydugumuzda sorunsuz bir sekilde h tagları p tagları calısıyor blockquoute tagları calısıyor olmalı. Yalnızca söylediğim taglarla bir content gönder. h1 h2 h3 p blockquote taglarını kullanabilirsin. göndereceğin cevap içinde bu taglar haricinde başında veya sonunda başka bir içerik bulunmamalı gönderdiğin içerik doğrudan blog postu olarak girilecek hazır bir sekilde gönder."],
+            ['role' => 'system', 'content' => 'You are the best blogger. You know seo tricks for write a blog post. You should write a blog post as a professional with my title that i send you. Your answers should be turkish. You are writing in turkish everyday. Your posts minimum 550 words. Blog yazıların bilgilendirici ve kaynak niteliğinde bir makale gibi.'],
+            ['role' => 'user', 'content' => "Write a blog post titled [$this->title] that post at least once every 500 words. The language of the post should be Turkish. The blog post should include an introduction, main body and conclusion. The conclusion should invite readers to leave comments. The main body should be divided into at least 3 different sub-sections. You can determine the subheadings yourself in accordance with SEO rules. The entire blog post must be written in accordance with SEO rules and pass SEO tests with excellent results. In addition, we will put the post in an html body, so you should write using h tags, p tags and blockquote tags if you have fields such as blockquote, and it should be displayed without distortion when added directly to an html page this tags important for our page creation. You can elaborate the subject as you wish, you can open subheadings, you are free in this regard, and you can add references, limited to 3 pieces. Only page content with html tags h1,h2,h3,p,blockquote."],
         ];
         $result = OpenAI::chat()->create([
             'model' => 'gpt-4',

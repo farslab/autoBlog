@@ -17,13 +17,13 @@
                 <div
                     class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
                     @foreach ($featuredPosts as $post)
-                        <div class="hs-carousel-slide bg-cover "
+                        <a href="{{route('post-show',$post->slug)}}" class="hs-carousel-slide bg-cover "
                             style="background-image: url('{{ $post->featured_image }}');">
                             <div
                                 class="flex left-0 items-end text-white font-bold h-full p-6 bg-gradient-to-t from-gray-900/[.7] bg-cover antialiased ">
                                 <span class="text-2xl md:text-4xl transition duration-700">{{ $post->title }}</span>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             </div>
@@ -55,7 +55,7 @@
         <!-- End Slider -->
         <div class="col-span-5 md:col-span-2 w-full overflow-hidden py-3 md:py-0 md:px-0 px-3 flex flex-col gap-y-2">
             @foreach ($lastPosts->take(4) as $post)
-                <div
+                <a href="{{route('post-show',$post->slug)}}"
                     class="items-center  bg-white border rounded-xl 
                     shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer flex
                      dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
@@ -67,13 +67,13 @@
                         </h3>
                         <p class="truncate mt-1 text-gray-500 dark:text-gray-400">
                             {{ $post->description }} </p>
-                        <div class="truncate mt-5 mt-auto">
+                        <div class="truncate mt-5">
                             <p class="text-xs text-gray-500 dark:text-gray-500">
                                 {{ $post->created_at->isoFormat('ll') }}
                             </p>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
 
         </div>
@@ -90,7 +90,7 @@
             <div class="mx-auto mt-6 gap-3 grid grid-flow-col overflow-x-scroll">
                 @foreach ($lastPosts->take(5) as $post)
                     <div
-                        class="flex flex-col min-w-[250px] overflow-hidden rounded-md shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer">
+                        class="flex flex-col min-w-[250px] overflow-hidden rounded-md shadow-sm hover:shadow-xl transition-all duration-300">
                         <div class="flex-shrink-0">
                             <img class="h-32 w-full object-cover"
                                 src="{{$post->featured_image}}"
@@ -101,7 +101,7 @@
                                 <p class="bg-slate-500 transition-all duration-200 hover:bg-slate-600 w-max px-2 py-1 rounded-full text-sm font-medium text-white">
                                     <a href="#">{{$post->category}}</a>
                                 </p>
-                                <a href="#" class="mt-2 block">
+                                <a href="{{route('post-show',$post->slug)}}" class="mt-2 block">
                                     <p class="text-lg font-semibold text-gray-900">{{$post->title}}</p>
                                     <p class="mt-2 text-base text-gray-500 truncate">{{$post->description}}
                                     </p>
@@ -114,7 +114,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="md:col-span-1 md:h-full mt-3 md:mt-0 flex flex-col justify-start px-3 py-2 bg-slate-100 rounded-md">
+        <div class="md:col-span-1 md:h-full mt-3 md:mt-0 flex flex-col justify-start px-3 py-2 rounded-md">
             <h2 class="text-center font-semibold text-2xl">Kategoriler </h2>
             <ul class="text-center flex flex-1 md:flex-col flex-row flex-wrap gap-3 mt-6 justify-center">
                 @foreach($lastPosts as $post)
@@ -127,7 +127,7 @@
     <!-- Card Blog -->
     <div class="max-w-[85rem] px-4 sm:px-6 md:px-8 md:py-14 mx-auto">
         <!-- Grid -->
-        <div class="grid md:grid-cols-2 gap-6">
+        <div class="grid md:grid-cols-2 gap-5">
             <!-- Card -->
             <a class="group relative block rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="#">
