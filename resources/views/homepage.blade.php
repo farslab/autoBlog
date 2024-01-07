@@ -96,16 +96,16 @@
                                 src="{{$post->featured_image}}"
                                 alt="">
                         </div>
-                        <div class="flex flex-col justify-between bg-white p-2">
-                            <div class="">
+                        <div class="flex flex-col justify-between h-full bg-white p-2">
+                            <div class="flex flex-col flex-1 justify-between">
                                 <p class="bg-slate-500 transition-all duration-200 hover:bg-slate-600 w-max px-2 py-1 rounded-full text-sm font-medium text-white">
-                                    <a href="#">{{$post->category}}</a>
+                                    <a href="{{route('cat-show',$post->category)}}">{{$post->category}}</a>
                                 </p>
-                                <a href="{{route('post-show',$post->slug)}}" class="mt-2 block">
+                                <a href="{{route('post-show',$post->slug)}}" class="mt-2 flex flex-col flex-1 justify-between">
                                     <p class="text-lg font-semibold text-gray-900">{{$post->title}}</p>
                                     <p class="mt-2 text-base text-gray-500 truncate">{{$post->description}}
                                     </p>
-                                    <p class="text-gray-600 text-sm pt-2">{{$post->created_at->isoFormat('ll')}}</p>
+                                    <p class="text-gray-600 text-sm pt-2 ">{{$post->created_at->isoFormat('ll')}}</p>
                                 </a>
                             </div>
 

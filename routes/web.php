@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PostController::class, 'home'])->name('welcome');
 
 Route::get('blog/{post}',[PostController::class, 'show'])->name('post-show');
+Route::get('kategori/{category}',[PostController::class,'catPage'])->name('cat-show');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 

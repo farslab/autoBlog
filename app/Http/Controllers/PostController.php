@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
 
+    public function catPage($category){
+        
+        
+
+        $catPosts=Post::where('category',$category)->get();
+
+
+        return view('category' ,compact('catPosts','category'));
+    }
+
     public function home(){
 
         $featuredPosts=Post::where('is_featured','1')->get();

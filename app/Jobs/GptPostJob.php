@@ -73,6 +73,8 @@ class GptPostJob implements ShouldQueue
             'title' => $this->title,
             'description' => $faker->paragraph,
             'content' => $trimmedContent,
+            'tags'=>$faker->words(5,true),
+            'category'=>$faker->randomElement(['Teknoloji','Tarih','Coğrafya','Sağlık','Güncel']),
             'meta_keywords' => $faker->words(5, true),
             'slug' => $faker->slug,
             'status' => $faker->randomElement(['published', 'draft']),
