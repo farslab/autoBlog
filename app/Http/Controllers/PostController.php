@@ -11,7 +11,8 @@ class PostController extends Controller
     public function home(){
 
         $featuredPosts=Post::where('is_featured','1')->get();
-        return view('homepage', compact('featuredPosts'));
+        $lastPosts=Post::orderBy('created_at','desc')->get();
+        return view('homepage', compact('featuredPosts','lastPosts'));
 
     }
     public function index()

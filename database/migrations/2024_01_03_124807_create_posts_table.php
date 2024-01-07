@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('content');
+            $table->string('category');
+            $table->string('tags');
             $table->text('meta_keywords')->nullable();
             $table->string('slug')->nullable();
             $table->string('status')->default('published');
